@@ -1,5 +1,11 @@
-.App {
-  text-align: center;
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #d5d5d5;
+  background-image: url('./img/az_subtle.png');
+  background-position: 0 0;
+  background-repeat: repeat;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .App-logo {
