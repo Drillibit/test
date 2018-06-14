@@ -1,14 +1,16 @@
-.container {
+.iemt_card_container {
     width: 80%;
     margin: 0 auto;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-top: 60px;
 }
 
 .btn_submit {
-    background-color: rgb(83, 132, 231);
-    margin: 0 0 13px 13px;
+    background-color: #7e7053;
     color: #fff;
     border: none;
     border-radius: 2px;
@@ -17,17 +19,33 @@
 }
 
 .item_card {
-    background-color: rgb(236, 236, 236);
-    max-width: 400px;
-    box-shadow: 2px 5px 20px 1px;
-    border-radius: 3px;
-    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
 }
 
 .item_card img{
-    max-width: 100%;
+    width: 200px;
 }
 
-.item_card aside {
-    padding: 0 13px 15px 13px;
+/* .item_price {
+    margin: 10px 0;
+} */
+
+.item_price th {
+    border-bottom: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+    padding: 10px;
+}
+
+.price_tag {
+    font-size: 1.3rem;
+}
+.item_price th:nth-child(3) {
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+
+}
+.item_price {
+    border-collapse: collapse;
 }

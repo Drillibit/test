@@ -1,0 +1,23 @@
+.search {
+    width: 40%;
+    margin: 40px auto;
+    display: flex;
+}
+
+.search_field {
+    width: 80%;
+    margin: 0 auto;
+    height: 40px;
+    font-size: 1.2rem;
+    border: 1px solid lightgray;
+    border-radius: 5px 0 0 5px;
+    margin: 0;
+}
+
+.btn_search {
+     background-color: #7e7053;
+     color: #fff;
+     border: none;
+     font-size: 1.2rem;
+     border-radius: 0 5px 5px 0; 
+}
