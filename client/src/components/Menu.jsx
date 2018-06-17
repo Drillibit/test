@@ -25,7 +25,7 @@ const Menu = (props) => {
                     <li className="dropdown_menu">Фурнитура</li>
                     <li className="dropdown_menu">Крепёж</li>
                     <li className="dropdown_menu">
-                        <Link to="/add_group">Добавить группу товаров</Link>
+                        <Link to="/manage_elements">Добавить группу товаров</Link>
                     </li>  
                 </ul>
             </div>

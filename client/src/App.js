@@ -8,8 +8,8 @@ import Footer from './components/Footer';
 
 const Loading = () => <div>Загрузка...</div>
 
-const AddGroup = Loadable({
-    loader: () => import('./components/form_groups/AddGroup'),
+const FormHub = Loadable({
+    loader: () => import('./components/form_groups/FormHub'),
     loading: Loading
 });
 
@@ -26,7 +26,7 @@ class App extends Component {
           <Menu />
           <Switch>
             <Route exact path="/" component={MainPage}/>
-            <Route path="/add_group" component={AddGroup}/>
+            <Route path="/manage_elements" component={FormHub}/>
           </Switch>
           <Footer />
         </div>
