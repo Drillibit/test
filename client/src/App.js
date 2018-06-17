@@ -8,6 +8,11 @@ import Footer from './components/Footer';
 
 const Loading = () => <div>Загрузка...</div>
 
+const AddGroup = Loadable({
+    loader: () => import('./components/form_groups/AddGroup'),
+    loading: Loading
+});
+
 const MainPage = Loadable({
     loader: () => import('./components/main_page/MainPage'),
     loading: Loading
@@ -21,6 +26,7 @@ class App extends Component {
           <Menu />
           <Switch>
             <Route exact path="/" component={MainPage}/>
+            <Route path="/add_group" component={AddGroup}/>
           </Switch>
           <Footer />
         </div>

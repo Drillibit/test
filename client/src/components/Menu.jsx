@@ -1,11 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/menu.css';
 
 const Menu = (props) => {
     return (
         <nav className="menu_main">
             <div className="logo-container">
-                <img  className="logo" src={require('../img/kvklogo.png')} alt="kvk-union-logo"/> 
+                <Link to="/">
+                    <img  className="logo" src={require('../img/kvklogo.png')} alt="kvk-union-logo"/>
+                </Link>     
             </div>
             <div className="nav_bar">
                 <ul>
@@ -21,6 +24,9 @@ const Menu = (props) => {
                     <li className="dropdown_menu">Светильники</li>
                     <li className="dropdown_menu">Фурнитура</li>
                     <li className="dropdown_menu">Крепёж</li>
+                    <li className="dropdown_menu">
+                        <Link to="/add_group">Добавить группу товаров</Link>
+                    </li>  
                 </ul>
             </div>
         </nav>
