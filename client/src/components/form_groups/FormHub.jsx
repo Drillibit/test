@@ -5,7 +5,7 @@ import '../../styles/from_style/form.css';
 
 export const FormHub = (props) => {
     return(
-        <div>
+        <div className="from_hub">
             <AddGroup />
             <AddItem />
         </div>
