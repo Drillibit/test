@@ -21,6 +21,7 @@ class ItemCard extends Component {
                         {this.state.toggleClass ? <button className="btn_submit">Болше</button> : <button className="btn_submit">Меньше</button>}
         <p>ТСветильник GX53, цвет корпуса - БЕЛЫЙ + лампа светодиодная 6 Вт (в комплекте) Тонкий встраиваемый светильник предназначен для освещения жилых и общественных помещений. Идеальное решение для дизайнерских подвесных и натяжных потолков.  Светодиодная лампа заменяет традиционные лампы на..</p>*/}
                 <table className="item_price">
+                    <tbody>
                     <tr>
                         <th>GX 53</th>
                         <th>до 5 штук</th>
@@ -33,7 +34,7 @@ class ItemCard extends Component {
                         <th className="price_tag">540тг</th>
                         <th className="price_tag">500тг</th> 
                     </tr>
-         
+                    </tbody>         
                 </table>
             </div>
         )
