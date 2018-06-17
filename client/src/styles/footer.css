@@ -3,7 +3,10 @@ footer {
     display: flex;
     justify-content: space-around;
     padding: 25px;
-    /* box-shadow: 1px 1px 1px 1px; */
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
 footer h5 {

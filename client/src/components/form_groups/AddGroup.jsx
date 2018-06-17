@@ -6,8 +6,9 @@ import '../../styles/from_style/form.css';
 
 const AddGroup = (props) => {
     return(
-        <div>
+        <div className="form_main">
             <FormGroup 
+                data={props.groups}
                 onSubmit={group => {
                     props.dispatch(addGroup(group));
                 }}
@@ -16,4 +17,10 @@ const AddGroup = (props) => {
     );
 };
 
-export default connect()(AddGroup);
+const mapStateToProps = (state) => {
+    return {
+        groups: state.groups
+    }
+}
+
+export default connect(mapStateToProps)(AddGroup);

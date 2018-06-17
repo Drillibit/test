@@ -5,6 +5,7 @@ class FormGroup extends Component {
         super(props);
 
         this.state = {
+            subGroup: props.group ? props.group.subGroup : '',
             groupName: props.group ? props.group.groupName : '',
             error: ''
         };
@@ -23,11 +24,16 @@ class FormGroup extends Component {
         e.preventDefault();
         if (!this.state.groupName) {
             this.setState(() => ({error: 'Укажите название группы'}));
+        } else if (this.state.groupName === this.state.subGroup){
+            this.setState(() => ({error: 'Группы не должны совпадать!'}))
+        } else {
+            this.setState(() => ({
+                error: ''
+            }));
+            this.props.onSubmit({
+                groupName: this.state.groupName,
+            });
         }
-        this.setState(() => ({error: ''}));
-        this.props.onSubmit({
-            groupName: this.state.groupName,
-        })
     };
 
     render() {
@@ -45,6 +51,18 @@ class FormGroup extends Component {
                             value={this.state.groupName}
                             onChange={this.handleInputChange}    
                         />
+                    </div>
+                    <div className="form_group">
+                        <select 
+                        
+                            name="subGroup" 
+                            value={this.state.subGroup} 
+                            onChange={this.handleInputChange}>
+                            <option>Выбрать группу товаров</option>
+                            {this.props.data.map((group, index) => {
+                                return <option key={index} value={group.groupName}>{group.groupName}</option>;
+                            })}
+                        </select>
                     </div>
                     <button className="form_btn">
                         Добавить группу
