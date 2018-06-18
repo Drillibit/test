@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import FormGroup from './FormGroup';
-import { addGroup } from '../../actions/group';
+import { startAddGroup } from '../../actions/group';
 
 const AddGroup = (props) => {
     return(
@@ -9,7 +9,7 @@ const AddGroup = (props) => {
             <FormGroup 
                 data={props.groups}
                 onSubmit={group => {
-                    props.dispatch(addGroup(group));
+                    props.dispatch(startAddGroup(group));
                 }}
             />
         </div>
