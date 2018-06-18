@@ -143,15 +143,15 @@ class ItemForm extends Component {
                         />
                     </div>
 
-                    <div className="form_group">
+                    <div className="fileContainer">
+                            
+                        <button className="submit_btn">Загрузить картинку</button>
                         <input 
+                            accept=".png, .jpg, .jpeg"
                             type="file"
                             name="itemImage"
                             onChange={this.onImageChange}    
                         />
-                        <div className="file-path-wrapper">
-                            <input className="file-path validate" type="text" />
-                        </div>
                     </div>
                     <button className="form_btn">
                         Добавить товар
