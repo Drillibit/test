@@ -5,7 +5,7 @@ const itemSchema = new Schema({
     itemName: String,
     itemPriceOne: Number,
     itemPriceOneCount: Number,
-    itmePriceTwo: Number,
+    itemPriceTwo: Number,
     itemPriceTwoCount: Number,
     itemPriceThree: Number,
     itemPriceThreeCount: Number,

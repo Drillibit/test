@@ -45,8 +45,9 @@ class ItemForm extends Component {
             this.setState(() => ({error: ''}));
             this.props.onSubmit({
                 itemName: this.state.itemName,
+                itemGroup: this.state.itemGroup,
                 itemPriceOne: this.state.itemPriceOne,
-                itemPriceOneCount: this.state.itemPriceCount,
+                itemPriceOneCount: this.state.itemPriceOneCount,
                 itemPriceTwo: this.state.itemPriceTwo,
                 itemPriceTwoCount: this.state.itemPriceTwoCount,
                 itemPriceThree: this.state.itemPriceThree,

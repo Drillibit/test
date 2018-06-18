@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const addItem = (item) => ({
+export const addItem = (item) => ({
     type: 'ADD_ITEM',
     item
 });
@@ -11,11 +11,11 @@ export const startAddItem = (itemData ={}) => {
             itemGroup = '',
             itemName = '',
             itemPriceOne = 0,
-            itemPriceOneCounter = 0,
+            itemPriceOneCount = 0,
             itemPriceTwo = 0,
-            itemPriceTwoCounter = 0,
+            itemPriceTwoCount = 0,
             itemPriceThree = 0,
-            itemPriceThreeCounter = 0,
+            itemPriceThreeCount = 0,
             itemDescription = '',
             image = '' 
         } = itemData;
@@ -23,11 +23,11 @@ export const startAddItem = (itemData ={}) => {
             itemGroup,
             itemName,
             itemPriceOne,
-            itemPriceOneCounter,
+            itemPriceOneCount,
             itemPriceTwo,
-            itemPriceTwoCounter,
+            itemPriceTwoCount,
             itemPriceThree,
-            itemPriceThreeCounter,
+            itemPriceThreeCount,
             itemDescription,
             image    
         };
@@ -35,11 +35,11 @@ export const startAddItem = (itemData ={}) => {
         dataForm.append('itemGroup', item.itemGroup);
         dataForm.append('itemName', item.itemName);
         dataForm.append('itemPriceOne', item.itemPriceOne);
-        dataForm.append('itemPriceOneCounter', item.itemPriceOneCounter);
+        dataForm.append('itemPriceOneCount', item.itemPriceOneCount);
         dataForm.append('itemPriceTwo', item.itemPriceTwo);
-        dataForm.append('itemPriceTwoCounter', item.itemPriceTwoCounter);
-        dataForm.append('itemPrceThree', item.itemPriceThree);
-        dataForm.append('itemPriceThreeCounter', item.itemPriceThreeCounter);
+        dataForm.append('itemPriceTwoCount', item.itemPriceTwoCount);
+        dataForm.append('itemPriceThree', item.itemPriceThree);
+        dataForm.append('itemPriceThreeCount', item.itemPriceThreeCount);
         dataForm.append('itemDescription', item.itemDescription);
         dataForm.append('image', item.image);
         let res = await axios.post('/api/add_item', dataForm);

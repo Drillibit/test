@@ -31,6 +31,7 @@ module.exports = app => {
             itemGroup: req.body.itemGroup,
             image: req.file.path
         });
+        console.log(req.body);
         try {
             await item.save();
             res.send(item);
