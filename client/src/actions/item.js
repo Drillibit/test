@@ -17,7 +17,7 @@ export const startAddItem = (itemData ={}) => {
             itemPriceThree = 0,
             itemPriceThreeCounter = 0,
             itemDescription = '',
-            itemImage = '' 
+            image = '' 
         } = itemData;
         const item = {
             itemGroup,
@@ -29,7 +29,7 @@ export const startAddItem = (itemData ={}) => {
             itemPriceThree,
             itemPriceThreeCounter,
             itemDescription,
-            itemImage    
+            image    
         };
         const dataForm = new FormData();
         dataForm.append('itemGroup', item.itemGroup);
@@ -41,7 +41,7 @@ export const startAddItem = (itemData ={}) => {
         dataForm.append('itemPrceThree', item.itemPriceThree);
         dataForm.append('itemPriceThreeCounter', item.itemPriceThreeCounter);
         dataForm.append('itemDescription', item.itemDescription);
-        dataForm.append('itemImage', item.itemImage);
+        dataForm.append('image', item.image);
         let res = await axios.post('/api/add_item', dataForm);
         dispatch(addItem({...res.data}));
 

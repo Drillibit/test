@@ -10,7 +10,7 @@ const itemSchema = new Schema({
     itemPriceThree: Number,
     itemPriceThreeCount: Number,
     itemDescription: String,
-    itemImage: String,
+    image: String,
     itemGroup: String
 });
 

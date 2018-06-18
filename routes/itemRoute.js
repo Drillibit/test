@@ -8,7 +8,7 @@ const Item = mongoose.model('items');
 const multerConf = {
     storage: multer.diskStorage({
         destination: (req, file, next) => {
-            next(null, './src');
+            next(null, './client/public/images');
         },
         filename: (req, file, next) => {
             const ext = file.mimetype.split('/')[1];
@@ -22,14 +22,14 @@ module.exports = app => {
         const item = new Item({
             itemName: req.body.itemName,
             itemPriceOne: req.body.itemPriceOne,
-            itemPriceOneCounter: req.body.itemPriceOneCounter,
+            itemPriceOneCount: req.body.itemPriceOneCount,
             itemPriceTwo: req.body.itemPriceTwo,
-            itemPriceTwoCounter: req.body.itemPriceTwoCounter,
+            itemPriceTwoCount: req.body.itemPriceTwoCount,
             itemPriceThree: req.body.itemPriceThree,
-            itemPriceThreeCounter: req.body.itemPriceThreeCounter,
+            itemPriceThreeCount: req.body.itemPriceThreeCount,
             itemDescription: req.body.itemDescription,
             itemGroup: req.body.itemGroup,
-            itemImage: req.file.path
+            image: req.file.path
         });
         try {
             await item.save();
@@ -60,7 +60,7 @@ module.exports = app => {
             item.itemPriceThree = req.body.itemPriceThree || item.itemPriceThree,
             item.itemPriceThreeCounter = req.body.itemPriceThreeCounter || item.itemPriceThreeCounter,
             item.itemDescription = req.body.itemDescription || item.itemDescription,
-            item.itemImage = req.body.itemImage || item.itemImage
+            item.image = req.body.image || item.image
             item.save()
                 .then( item => {
                     res.send(item);

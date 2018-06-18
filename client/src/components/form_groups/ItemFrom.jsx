@@ -13,7 +13,7 @@ class ItemForm extends Component {
             itemPriceThree: props.item ? props.item.itemPriceThree : '',
             itemPriceThreeCount: props.item ? props.item.itemPriceThree : '',
             itemDescription: props.itme ? props.item.itemDescription : '',
-            itemImage: props.item ? props.item.itemImage : '',
+            image: props.item ? props.item.image : '',
             error: ''
         }
     };
@@ -28,9 +28,9 @@ class ItemForm extends Component {
     };
     
     onImageChange = e => {
-        const itemImage = e.target.files[0];
+        const image = e.target.files[0];
         this.setState(() => ({
-            itemImage
+            image
         }));
     };
 
@@ -46,10 +46,13 @@ class ItemForm extends Component {
             this.props.onSubmit({
                 itemName: this.state.itemName,
                 itemPriceOne: this.state.itemPriceOne,
+                itemPriceOneCount: this.state.itemPriceCount,
                 itemPriceTwo: this.state.itemPriceTwo,
+                itemPriceTwoCount: this.state.itemPriceTwoCount,
                 itemPriceThree: this.state.itemPriceThree,
+                itemPriceThreeCount: this.state.itemPriceThreeCount,
                 itemDescription: this.state.itemDescription,
-                itemImage: this.state.itemImage
+                image: this.state.image
             });
         }
     };
@@ -75,8 +78,20 @@ class ItemForm extends Component {
                     </div>
 
                     <div className="form_group">
+                        <label htmlFor="groupName">Описание товара</label>
+                        <input 
+                            type="text"
+                            name="itemDescription"
+                            placeholder="Описание товара"
+                            autoFocus
+                            value={this.state.itemDescription}
+                            onChange={this.handleInputChange}    
+                        />
+                    </div>
+
+                    <div className="form_group">
                         <select 
-                            name="subGroup" 
+                            name="itemGroup" 
                             value={this.state.itemGroup} 
                             onChange={this.handleInputChange}>
                             <option>Выбрать группу товаров</option>
@@ -98,7 +113,7 @@ class ItemForm extends Component {
                         <label htmlFor="itemPriceOneCount">до:</label>
                         <input 
                             type="number"
-                            name="itemPrceOneCount"
+                            name="itemPriceOneCount"
                             placeholder="0"
                             value={this.state.itemPriceOneCount}
                             onChange={this.handleInputChange}    
@@ -117,7 +132,7 @@ class ItemForm extends Component {
                         <label htmlFor="itemPriceTwoCount">до:</label>
                         <input 
                             type="number"
-                            name="itemPrceTwoCount"
+                            name="itemPriceTwoCount"
                             placeholder="0"
                             value={this.state.itemPriceTwoCount}
                             onChange={this.handleInputChange}    
@@ -136,7 +151,7 @@ class ItemForm extends Component {
                         <label htmlFor="itemPriceThreeCount">до:</label>
                         <input 
                             type="number"
-                            name="itemPrceThreeCount"
+                            name="itemPriceThreeCount"
                             placeholder="0"
                             value={this.state.itemPriceThreeCount}
                             onChange={this.handleInputChange}    
@@ -145,11 +160,11 @@ class ItemForm extends Component {
 
                     <div className="fileContainer">
                             
-                        <button className="submit_btn">Загрузить картинку</button>
+                        <button onClick={this.onImageChange} className="submit_btn">Загрузить картинку</button>
                         <input 
                             accept=".png, .jpg, .jpeg"
                             type="file"
-                            name="itemImage"
+                            name="image"
                             onChange={this.onImageChange}    
                         />
                     </div>
