@@ -1,10 +1,24 @@
 const mongoose = require('mongoose');
+const multer = require('multer');
+
 require('../model/item');
 
 const Item = mongoose.model('items');
 
+const multerConf = {
+    storage: multer.diskStorage({
+        destination: (req, file, next) => {
+            next(null, './src');
+        },
+        filename: (req, file, next) => {
+            const ext = file.mimetype.split('/')[1];
+            next(null, `${file.fieldname}-${Date.now()}.${ext}`);
+        }
+    })
+}
+
 module.exports = app => {
-    app.post('/api/add_item', async (req, res) => {
+    app.post('/api/add_item', multer(multerConf).single('image') , async (req, res) => {
         const item = new Item({
             itemName: req.body.itemName,
             itemPriceOne: req.body.itemPriceOne,
@@ -15,7 +29,7 @@ module.exports = app => {
             itemPriceThreeCounter: req.body.itemPriceThreeCounter,
             itemDescription: req.body.itemDescription,
             itemGroup: req.body.itemGroup,
-            itemImage: req.body.itemImage
+            itemImage: req.file.path
         });
         try {
             await item.save();
