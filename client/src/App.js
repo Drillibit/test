@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Loadable from 'react-loadable';
+//Data
+import * as actions from './actions/fetchData';
 //Components
 import Menu from './components/Menu';
 import Footer from './components/Footer';
@@ -19,6 +22,9 @@ const MainPage = Loadable({
 });
 
 class App extends Component {
+  componentDidMount() {
+    this.props.fetchData();
+  }
   render() {
     return (
       <Router>
@@ -35,4 +41,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(null, actions)(App);

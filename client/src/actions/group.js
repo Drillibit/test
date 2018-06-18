@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const addGroup = group => ({
+export const addGroup = group => ({
     type: 'ADD_GROUP',
     group
 });

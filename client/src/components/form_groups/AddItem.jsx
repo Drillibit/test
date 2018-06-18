@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ItemForm from './ItemFrom';
-import { addItem } from '../../actions/item';
+import { startAddItem } from '../../actions/item';
 
 export const AddItem = (props) => {
     return(
@@ -9,7 +9,7 @@ export const AddItem = (props) => {
             <ItemForm 
                 data={props.groups}
                 onSubmit={item => {
-                    props.dispatch(addItem(item));
+                    props.dispatch(startAddItem(item));
                 }}
             />
         </div>
