@@ -1,8 +1,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const app = express();
 
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://drillbit_dry:AACC220105bk@ds161700.mlab.com:61700/kvk-online-store')
+    .then(() => console.log('MongoDB connected...'))
+    .catch(err => console.log(err));
+
+
 app.use(bodyParser.json());
+
+//Routes
+require('./routes/groupRoute')(app);
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('kvk-front/build'));
