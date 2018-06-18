@@ -10,7 +10,8 @@ const itemSchema = new Schema({
     itemPriceThree: Number,
     itemPriceThreeCount: Number,
     itemDescription: String,
-    itemImage: String
+    itemImage: String,
+    itemGroup: String
 });
 
 mongoose.model('items', itemSchema);

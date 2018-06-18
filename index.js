@@ -13,6 +13,7 @@ app.use(bodyParser.json());
 
 //Routes
 require('./routes/groupRoute')(app);
+require('./routes/itemRoute')(app);
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('kvk-front/build'));
