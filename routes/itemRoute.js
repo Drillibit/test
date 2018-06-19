@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const multer = require('multer');
+const fs = require('fs');
 
 require('../model/item');
 
@@ -8,7 +9,7 @@ const Item = mongoose.model('items');
 const multerConf = {
     storage: multer.diskStorage({
         destination: (req, file, next) => {
-            next(null, './client/public/images');
+            next(null, './client');
         },
         filename: (req, file, next) => {
             const ext = file.mimetype.split('/')[1];
@@ -19,6 +20,8 @@ const multerConf = {
 
 module.exports = app => {
     app.post('/api/add_item', multer(multerConf).single('image') , async (req, res) => {
+        const rawImage = fs.readFileSync(req.file.path);
+        const encImage = rawImage.toString('base64');
         const item = new Item({
             itemName: req.body.itemName,
             itemPriceOne: req.body.itemPriceOne,
@@ -29,9 +32,9 @@ module.exports = app => {
             itemPriceThreeCount: req.body.itemPriceThreeCount,
             itemDescription: req.body.itemDescription,
             itemGroup: req.body.itemGroup,
-            image: req.file.path
+            contentType: req.file.mimetype,
+            image: Buffer(encImage, 'base64')
         });
-        console.log(req.body);
         try {
             await item.save();
             res.send(item);
@@ -67,6 +70,16 @@ module.exports = app => {
                     res.send(item);
                 })
         })
+    });
+
+    app.get('/api/items/:id', (req, res) => {
+        Item.findOne({
+                _id: req.params.id
+            })
+            .then(item => {
+                res.set('Content-Type', item.contentType);
+                res.send(item.image);
+            });
     });
 
     app.delete('/api/remove_item', (req, res) => {

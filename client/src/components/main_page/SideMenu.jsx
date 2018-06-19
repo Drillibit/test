@@ -1,15 +1,18 @@
 import React from 'react';
 import '../../styles/side_menu.css';
 
-export const Sidemenu = () => {
+export const Sidemenu = (props) => {
     return(
         <div className="side_menu">
-            <h3 className="side_menu_head">Светильники</h3>
+            <h3 className="side_menu_head">{props.name}</h3>
             <ul>
-                <li className="side_menu_item">Комплекты GX53 (16)</li>
-                <li className="side_menu_item">Комплекты GX70 (7)</li>
-                <li className="side_menu_item">Светильники GX53 (10)</li>
-                <li className="side_menu_item">Светильники GX70 (8)</li>
+                {props.items.map( item => {
+                    if (item.itemGroup === props.name) {
+                        return <li key={item._id} className="side_menu_item">{item.itemName}</li>;
+                    }
+                })}
+                
+                
             </ul>
         </div>
     )

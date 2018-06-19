@@ -16,10 +16,10 @@ require('./routes/groupRoute')(app);
 require('./routes/itemRoute')(app);
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('kvk-front/build'));
+    app.use(express.static('client/build'));
     const path = require('path');
     app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'kvk-front', 'build', 'index.html'));
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
 }
 

@@ -21,6 +21,11 @@ const MainPage = Loadable({
     loading: Loading
 });
 
+const ItemCard = Loadable({
+    loader: () => import('./components/main_page/ItemCard'),
+    loading: Loading
+});
+
 class App extends Component {
   componentDidMount() {
     this.props.fetchData();
@@ -33,6 +38,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={MainPage}/>
             <Route path="/manage_elements" component={FormHub}/>
+            <Route path="/item_info/:id" component={ItemCard} />
           </Switch>
           <Footer />
         </div>

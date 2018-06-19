@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import '../../styles/item_card.css';
 
 
@@ -8,31 +9,53 @@ class ItemCard extends Component {
         this.state = {
             toggleClass: true
         }
+     
     }
-    handleToggle = e => {
 
-    }
 
     render(){
+        const {
+            itemName,
+            itemPriceOne,
+            itemPriceOneCount,
+            itemPriceTwo,
+            itemPriceTwoCount,
+            itemPriceThree,
+            itemPriceThreeCount,
+            _id,
+            image
+        } = this.props.data;
+        const tdStyle = {
+            textAlign: 'center',
+            fontSize: '1.2rem',
+            fontWeight: 'bold',
+            padding: '0',
+            borderTop: '1px solid lightgray',
+            
+        };
+        const tr = {
+            
+        }
         return (
             <div className="item_card">                
 
-                    { /*          <h4>Назвине Товара</h4>
-                        {this.state.toggleClass ? <button className="btn_submit">Болше</button> : <button className="btn_submit">Меньше</button>}
-        <p>ТСветильник GX53, цвет корпуса - БЕЛЫЙ + лампа светодиодная 6 Вт (в комплекте) Тонкий встраиваемый светильник предназначен для освещения жилых и общественных помещений. Идеальное решение для дизайнерских подвесных и натяжных потолков.  Светодиодная лампа заменяет традиционные лампы на..</p>*/}
                 <table className="item_price">
                     <tbody>
+                        <div style={tdStyle}>
+                            {itemName} 
+                            <Link to={`/item_info/${_id}`} data={this.props.data} className="btn_submit">Описание</Link>
+                        </div>
                     <tr>
-                        <th>GX 53</th>
-                        <th>до 5 штук</th>
-                        <th>до 10 штук</th>
-                        <th>до 20 штук</th>
+                        <th></th>
+                        <th>до {itemPriceOneCount} штук</th>
+                        <th>до {itemPriceTwoCount} штук</th>
+                        <th>до {itemPriceThreeCount} штук</th>
                     </tr>
                     <tr>
-                        <th><img src={require('../../img/items/item-1.jpg')} alt="" className="item_image"/></th>
-                        <th className="price_tag">580тг</th>
-                        <th className="price_tag">540тг</th>
-                        <th className="price_tag">500тг</th> 
+                        <th><img src={`/api/items/${_id}`} alt={itemName} className="item_image"/></th>
+                        <th className="price_tag">{itemPriceOne} тг</th>
+                        <th className="price_tag">{itemPriceTwo} тг</th>
+                        <th className="price_tag">{itemPriceThree} тг</th> 
                     </tr>
                     </tbody>         
                 </table>
