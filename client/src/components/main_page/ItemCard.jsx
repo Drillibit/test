@@ -12,6 +12,14 @@ class ItemCard extends Component {
      
     }
 
+    handleClick = e => {
+        e.preventDefault();
+        // const target = e.target;
+        this.setState({
+            toggleClass: !this.state.toggleClass 
+        })
+    }
+
 
     render(){
         const {
@@ -29,22 +37,22 @@ class ItemCard extends Component {
             textAlign: 'center',
             fontSize: '1.2rem',
             fontWeight: 'bold',
-            padding: '0',
+            padding: '10px 0',
             borderTop: '1px solid lightgray',
             
         };
-        const tr = {
-            
-        }
+
+
         return (
             <div className="item_card">                
 
                 <table className="item_price">
                     <tbody>
-                        <div style={tdStyle}>
-                            {itemName} 
-                            <Link to={`/item_info/${_id}`} data={this.props.data} className="btn_submit">Описание</Link>
-                        </div>
+                        <tr>
+                            <th colSpan="4" style={tdStyle}>
+                                {itemName} 
+                            </th>
+                        </tr>
                     <tr>
                         <th></th>
                         <th>до {itemPriceOneCount} штук</th>
@@ -57,8 +65,9 @@ class ItemCard extends Component {
                         <th className="price_tag">{itemPriceTwo} тг</th>
                         <th className="price_tag">{itemPriceThree} тг</th> 
                     </tr>
-                    </tbody>         
+                    </tbody>
                 </table>
+                <Link onClick={this.handleClick} to={`/item_info/${_id}`} data={this.props.data} className="btn_submit">Описание</Link>         
             </div>
         )
     }
