@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const admin = require("firebase-admin");
+const firebase = require("firebase");
 const app = express();
 
 mongoose.Promise = global.Promise;
@@ -13,6 +14,17 @@ mongoose
   .catch(err => console.log(err));
 
 app.use(bodyParser.json());
+
+//Firebase config
+var config = {
+  apiKey: "AIzaSyB2imtWdolAr7iU8H5-sTFTaE3XRFjOdgY",
+  authDomain: "kvk-online-store.firebaseapp.com",
+  databaseURL: "https://kvk-online-store.firebaseio.com",
+  projectId: "kvk-online-store",
+  storageBucket: "kvk-online-store.appspot.com",
+  messagingSenderId: "519150177046"
+};
+firebase.initializeApp(config);
 
 //Routes
 require("./routes/groupRoute")(app);
